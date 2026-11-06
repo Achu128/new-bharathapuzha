@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bharathapuzha Watershed | Explore Nila</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f0f8ff;
+    color: #18354d;
+    line-height: 1.7;
+}
+
+/* NAVIGATION */
+
+header {
+    background: linear-gradient(120deg, #003b70, #0879bd);
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #8ee7ff;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 570px;
+    display: flex;
+    align-items: center;
+    padding: 70px 9%;
+    color: white;
+    background:
+    linear-gradient(rgba(0,35,75,0.65),rgba(0,35,75,0.65)),
+    url('https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1800&q=85');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 750px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 19px;
+    margin-bottom: 30px;
+}
+
+.button {
+    display: inline-block;
+    background: #00a8e8;
+    color: white;
+    padding: 13px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: white;
+    color: #00558c;
+}
+
+/* GENERAL SECTIONS */
+
+section {
+    padding: 75px 9%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 34px;
+    color: #00558c;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #627d91;
+    margin-bottom: 40px;
+}
+
+.intro-content {
+    max-width: 1100px;
+    margin: auto;
+    text-align: justify;
+    font-size: 17px;
+}
+
+/* STATISTICS */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg,#0066a8,#00a8e8);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.stat-card h2 {
+    font-size: 30px;
+}
+
+/* GEOGRAPHY */
+
+.geo {
+    background: #e4f4ff;
+}
+
+.geo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 22px;
+}
+
+.geo-card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    border-left: 5px solid #008bd0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.geo-card h3 {
+    color: #0066a8;
+    margin-bottom: 10px;
+}
+
+/* INTERACTIVE MAP */
+
+.map-section {
+    background: white;
+}
+
+.map-container {
+    width: 100%;
+    height: 600px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.map-button {
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* TRIBUTARIES */
+
+.tributaries {
+    background: white;
+}
+
+.tributary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 20px;
+}
+
+.tributary-card {
+    background: #eaf7ff;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.tributary-card h3 {
+    color: #0075b9;
+    margin-bottom: 10px;
+}
+
+/* DAMS */
+
+.dams {
+    background: linear-gradient(180deg,#e5f5ff,#ffffff);
+}
+
+.dam-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
+    gap: 28px;
+}
+
+.dam-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,75,130,0.13);
+    transition: 0.3s;
+}
+
+.dam-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(0,75,130,0.2);
+}
+
+.dam-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.dam-info {
+    padding: 23px;
+}
+
+.dam-info h3 {
+    color: #0066a8;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.dam-info p {
+    color: #526b7d;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.dam-tag {
+    display: inline-block;
+    background: #d8f0ff;
+    color: #00558c;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* IMPORTANCE */
+
+.importance {
+    background: linear-gradient(120deg,#004b7c,#007eb8);
+    color: white;
+}
+
+.importance .section-title,
+.importance .section-subtitle {
+    color: white;
+}
+
+.importance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 20px;
+}
+
+.importance-card {
+    background: rgba(255,255,255,0.12);
+    padding: 25px;
+    border-radius: 12px;
+}
+
+/* CONSERVATION */
+
+.conservation {
+    background: #eaf6ff;
+}
+
+/* GALLERY */
+
+.gallery {
+    background: #e4f4ff;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 20px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 14px;
+    transition: 0.4s;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.04);
+}
+
+.caption {
+    text-align: center;
+    margin-top: 8px;
+    font-weight: 600;
+    color: #00558c;
+}
+
+/* CONTACT */
+
+.contact {
+    background: white;
+    text-align: center;
+}
+
+.contact-box {
+    max-width: 600px;
+    margin: auto;
+    background: linear-gradient(135deg,#004b7c,#008fd0);
+    color: white;
+    padding: 40px;
+    border-radius: 18px;
+}
+
+.contact-box h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.contact-box p {
+    font-size: 18px;
+    margin: 10px;
+}
+
+.contact-box a {
+    color: white;
+    text-decoration: none;
+}
+
+/* FOOTER */
+
+footer {
+    background: #002b49;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media(max-width:768px) {
+
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        margin-top: 15px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero {
+        min-height: 480px;
+    }
+
+    .map-container {
+        height: 450px;
+    }
+
+    section {
+        padding: 55px 6%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header>
+
+<div class="logo">🌊 BHARATHAPUZHA</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#geography">Geography</a>
+<a href="#map">Map</a>
+<a href="#tributaries">Tributaries</a>
+<a href="#dams">Dams</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</header>
+
+
+<!-- HERO SECTION -->
+
+<div class="hero" id="home">
+
+<div class="hero-content">
+
+<h1>Discover the Bharathapuzha Watershed</h1>
+
+<p>
+Explore the geography, river systems, dams,
+landscapes and environmental significance of
+Kerala's historic Nila River.
+</p>
+
+<a href="#map" class="button">Explore Interactive Map →</a>
+
+</div>
+</div>
+
+
+<!-- ABOUT -->
+
+<section class="intro" id="about">
+
+<h2 class="section-title">About Bharathapuzha Watershed</h2>
+
+<p class="section-subtitle">
+Understanding the lifeline of central Kerala
+</p>
+
+<div class="intro-content">
+
+<p>
+The Bharathapuzha, popularly known as Nila, is one of
+the most important rivers of Kerala. It is the second
+longest river in the state after the Periyar. The river
+originates in the Anamalai Hills of the Western Ghats
+and flows westwards through Tamil Nadu and Kerala
+before joining the Arabian Sea at Ponnani in
+Malappuram district.
+</p>
+
+<br>
+
+<p>
+The Bharathapuzha watershed is an important
+geographical region that collects rainfall and channels
+surface water into the main river and its tributaries.
+The basin extends across parts of Kerala and Tamil Nadu.
+In Kerala, it covers areas of Palakkad, Malappuram
+and Thrissur districts.
+</p>
+
+<br>
+
+<p>
+The river plays an important role in agriculture,
+irrigation, groundwater recharge, biodiversity and
+the cultural life of communities living along its banks.
+It is also closely associated with Kerala's history,
+literature and traditions.
+</p>
+
+<div class="stats">
+
+<div class="stat-card">
+<h2>209 km</h2>
+<p>Approximate River Length</p>
+</div>
+
+<div class="stat-card">
+<h2>6,186 km²</h2>
+<p>Approximate Basin Area</p>
+</div>
+
+<div class="stat-card">
+<h2>3</h2>
+<p>Major Kerala Districts</p>
+</div>
+
+<div class="stat-card">
+<h2>Arabian Sea</h2>
+<p>River Destination</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- GEOGRAPHY -->
+
+<section class="geo" id="geography">
+
+<h2 class="section-title">Geographical Information</h2>
+
+<p class="section-subtitle">
+Physical and geographical characteristics
+</p>
+
+<div class="geo-grid">
+
+<div class="geo-card">
+<h3>📍 Location</h3>
+<p>
+The watershed is situated in southern India,
+extending across Kerala and Tamil Nadu. It covers
+parts of Palakkad, Malappuram and Thrissur districts
+in Kerala.
+</p>
+</div>
+
+<div class="geo-card">
+<h3>⛰️ Origin</h3>
+<p>
+The river originates in the Anamalai Hills of the
+Western Ghats, an important mountain system
+of southern India.
+</p>
+</div>
+
+<div class="geo-card">
+<h3>🌊 Drainage</h3>
+<p>
+The river flows from east to west and drains into
+the Arabian Sea at Ponnani. Its drainage system
+includes several tributaries and streams.
+</p>
+</div>
+
+<div class="geo-card">
+<h3>🌧️ Climate</h3>
+<p>
+The watershed receives substantial rainfall during
+the Southwest Monsoon. Rainfall distribution varies
+between the Western Ghats, Palakkad region and
+coastal areas.
+</p>
+</div>
+
+<div class="geo-card">
+<h3>🌳 Physiography</h3>
+<p>
+The basin includes mountainous highlands,
+midland plateaus, valleys, agricultural plains
+and low-lying coastal regions.
+</p>
+</div>
+
+<div class="geo-card">
+<h3>🌱 Land Use</h3>
+<p>
+Major land-use categories include agricultural
+land, plantations, forests, settlements, river
+channels and water bodies.
+</p>
+</div>
+
+</div>
+</section>
+
+
+<!-- INTERACTIVE MAP -->
+
+<section class="map-section" id="map">
+
+<h2 class="section-title">Interactive Watershed Map</h2>
+
+<p class="section-subtitle">
+Explore the Bharathapuzha Watershed geographically
+</p>
+
+<div class="map-container">
+
+<iframe
+src="https://achu128.github.io/bharathapuzha-web/"
+title="Bharathapuzha Interactive Watershed Map"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<div class="map-button">
+
+<a href="https://achu128.github.io/bharathapuzha-web/"
+target="_blank"
+class="button">
+Open Full Interactive Map ↗
+</a>
+
+</div>
+
+</section>
+
+
+<!-- TRIBUTARIES -->
+
+<section class="tributaries" id="tributaries">
+
+<h2 class="section-title">Major Tributaries</h2>
+
+<p class="section-subtitle">
+Important rivers and streams of the basin
+</p>
+
+<div class="tributary-grid">
+
+<div class="tributary-card">
+<h3>Kalpathipuzha</h3>
+<p>
+An important tributary associated with the Palakkad
+region. It is formed by the joining of smaller streams
+including Walayar, Malampuzha and Korayar.
+</p>
+</div>
+
+<div class="tributary-card">
+<h3>Gayathripuzha</h3>
+<p>
+An important tributary originating in the Western
+Ghats region and draining areas around Nenmara
+and Alathur.
+</p>
+</div>
+
+<div class="tributary-card">
+<h3>Chitturpuzha</h3>
+<p>
+Also known as Chittur River, it drains parts of
+the eastern Palakkad region.
+</p>
+</div>
+
+<div class="tributary-card">
+<h3>Thuthapuzha</h3>
+<p>
+A major tributary that joins Bharathapuzha near
+Pallippuram and contributes significantly to
+the river's flow.
+</p>
+</div>
+
+</div>
+</section>
+
+
+<!-- MAJOR DAMS -->
+
+<section class="dams" id="dams">
+
+<h2 class="section-title">Major Dams of Bharathapuzha Watershed</h2>
+
+<p class="section-subtitle">
+Important reservoirs and irrigation projects associated with the basin
+</p>
+
+<div class="dam-grid">
+
+
+<!-- MALAMPUZHA -->
+
+<div class="dam-card">
+
+<img src="Malampuzha.jpg" alt="Malampuzha Dam">
+
+<div class="dam-info">
+
+<h3>Malampuzha Dam</h3>
+
+<p>
+Malampuzha Dam is located near Palakkad town.
+It is constructed across the Malampuzha River,
+an important tributary of the Bharathapuzha.
+</p>
+
+<p>
+The reservoir supports irrigation, drinking water
+supply and tourism. It is one of the major water
+resource projects in Palakkad.
+</p>
+
+<span class="dam-tag">Palakkad District</span>
+
+</div>
+</div>
+
+
+<!-- KANJIRAPUZHA -->
+
+<div class="dam-card">
+
+<img src="Kanjirapuzha.jpg" alt="Kanjirapuzha Dam">
+
+<div class="dam-info">
+
+<h3>Kanjirapuzha Dam</h3>
+
+<p>
+Kanjirapuzha Dam is situated in the Mannarkkad
+region of Palakkad district. It is an important
+irrigation project associated with the
+Bharathapuzha basin.
+</p>
+
+<p>
+The reservoir supports agricultural activities
+and water management in surrounding areas.
+</p>
+
+<span class="dam-tag">Palakkad District</span>
+
+</div>
+</div>
+
+
+<!-- MANGALAM -->
+
+<div class="dam-card">
+
+<img src="Mangalam.jpg" alt="Mangalam Dam">
+
+<div class="dam-info">
+
+<h3>Mangalam Dam</h3>
+
+<p>
+Mangalam Dam is located in the Alathur region
+of Palakkad district. It is constructed across
+the Cherukunnapuzha, a tributary of the
+Gayathripuzha system.
+</p>
+
+<p>
+The reservoir plays an important role in irrigation
+and agricultural development.
+</p>
+
+<span class="dam-tag">Palakkad District</span>
+
+</div>
+</div>
+
+
+<!-- MEENKARA -->
+
+<div class="dam-card">
+
+<img src="Meenkara.jpg" alt="Meenkara Dam">
+
+<div class="dam-info">
+
+<h3>Meenkara Dam</h3>
+
+<p>
+Meenkara Dam is situated near Chittur in
+Palakkad district. It is constructed across
+the Meenkara River, which forms part of the
+Chitturpuzha drainage system.
+</p>
+
+<p>
+It provides water for irrigation and supports
+agricultural activities in the region.
+</p>
+
+<span class="dam-tag">Palakkad District</span>
+
+</div>
+</div>
+
+
+<!-- POTHUNDI -->
+
+<div class="dam-card">
+
+<img src="pothundi-dam-photo-from.jpg" alt="Pothundi Dam">
+
+<div class="dam-info">
+
+<h3>Pothundi Dam</h3>
+
+<p>
+Pothundi Dam is located near Nenmara in
+Palakkad district. It is constructed across
+the Padippuzha and Meenchiladipuzha streams,
+tributaries of the Gayathripuzha system.
+</p>
+
+<p>
+The reservoir is an important source of
+irrigation water for agricultural lands.
+</p>
+
+<span class="dam-tag">Palakkad District</span>
+
+</div>
+</div>
+
+</div>
+</section>
+
+
+<!-- IMPORTANCE -->
+
+<section class="importance">
+
+<h2 class="section-title">Importance of the Watershed</h2>
+
+<p class="section-subtitle">
+Why Bharathapuzha matters
+</p>
+
+<div class="importance-grid">
+
+<div class="importance-card">
+<h3>🌾 Agriculture</h3>
+<p>
+Supports agricultural activities, particularly
+paddy cultivation, through irrigation and water supply.
+</p>
+</div>
+
+<div class="importance-card">
+<h3>💧 Water Resources</h3>
+<p>
+Provides water for domestic purposes, irrigation
+and groundwater recharge.
+</p>
+</div>
+
+<div class="importance-card">
+<h3>🐟 Biodiversity</h3>
+<p>
+River channels and associated ecosystems support
+aquatic organisms and freshwater biodiversity.
+</p>
+</div>
+
+<div class="importance-card">
+<h3>🏛️ Cultural Heritage</h3>
+<p>
+The Nila River has an important place in Kerala's
+literature, history, festivals and cultural traditions.
+</p>
+</div>
+
+</div>
+</section>
+
+
+<!-- ENVIRONMENTAL CHALLENGES -->
+
+<section class="conservation">
+
+<h2 class="section-title">Environmental Challenges and Conservation</h2>
+
+<p class="section-subtitle">
+Protecting the future of the Nila River
+</p>
+
+<div class="intro-content">
+
+<h3>Major Environmental Challenges</h3>
+
+<br>
+
+<p>
+<strong>1. Water Pollution:</strong>
+Domestic sewage, agricultural runoff and industrial
+waste can affect river water quality.
+</p>
+
+<br>
+
+<p>
+<strong>2. Sand Mining:</strong>
+Excessive sand extraction can disturb river channels,
+riverbanks and aquatic habitats.
+</p>
+
+<br>
+
+<p>
+<strong>3. Water Scarcity:</strong>
+Seasonal rainfall variation, increasing water demand
+and changes in river flow contribute to water stress.
+</p>
+
+<br>
+
+<p>
+<strong>4. Habitat Degradation:</strong>
+Changes in land use, deforestation and encroachment
+can damage river ecosystems.
+</p>
+
+<br>
+
+<h3>Conservation Measures</h3>
+
+<br>
+
+<p>• Promote sustainable water use and rainwater harvesting.</p>
+<p>• Control illegal sand mining and riverbank encroachment.</p>
+<p>• Improve sewage treatment and waste management.</p>
+<p>• Protect wetlands and aquatic biodiversity.</p>
+<p>• Encourage community participation in river conservation.</p>
+
+</div>
+</section>
+
+
+<!-- GALLERY -->
+
+<section class="gallery" id="gallery">
+
+<h2 class="section-title">Natural Landscapes</h2>
+
+<p class="section-subtitle">
+A glimpse of rivers, mountains and natural landscapes
+</p>
+
+<div class="gallery-grid">
+
+<div>
+<img src="https://images.unsplash.com/photo-150053085
